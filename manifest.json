@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "G-Picker",
+    "version": "1.3",
+    "description": "Automatically selects a specified Google account on the account chooser page.",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting"
+    ],
+    "options_page": "options.html",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon_16.png",
+            "48": "images/icon_48.png",
+            "128": "images/icon_128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon_16.png",
+        "48": "images/icon_48.png",
+        "128": "images/icon_128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://accounts.google.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}
